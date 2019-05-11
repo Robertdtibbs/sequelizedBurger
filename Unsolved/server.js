@@ -8,6 +8,8 @@ var app = express();
 // process.env.PORT lets the port be set by Heroku
 var PORT = process.env.PORT || 8080;
 
+var db = require("./models")
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -20,6 +22,11 @@ var routes = require("./controllers/burgersController.js");
 
 app.use(routes);
 
-app.listen(PORT, function() {
-  console.log("Listening on port:%s", PORT);
-});
+
+db.sequelize.sync({force: true}).then(function(){
+  app.listen(PORT, function() {
+    console.log("Listening on port:%s", PORT);
+  });
+})
+
+
