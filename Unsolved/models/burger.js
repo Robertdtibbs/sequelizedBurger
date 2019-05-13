@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes){
       }
     },
     devoured: {
-      type: Boolean,
+      type: DataTypes.BOOLEAN,
       defaultValue: false
     },
   });
