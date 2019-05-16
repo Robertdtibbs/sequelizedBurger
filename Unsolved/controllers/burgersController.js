@@ -1,5 +1,5 @@
 
-var db = require("./models");
+var db = require("../models");
 
 module.exports = function (app) {
 
@@ -22,16 +22,17 @@ module.exports = function (app) {
     })
   });
 
-  app.put('/api/burgers/:id', function(req, res){
-    db.Burgers.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(dbBurgers){
-        res.json(dbBurgers);
-      })
+  app.put('/api/burgers/:id', function (req, res) {
+    db.Burgers.update({
+      devoured: true
+    },
+    {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbBurgers) {
+      res.json(dbBurgers);
+    })
   })
 }
 
