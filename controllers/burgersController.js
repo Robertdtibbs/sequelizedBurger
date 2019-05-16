@@ -5,7 +5,7 @@ module.exports = function (app) {
 
   // Route to get all burgers
   app.get("/api/burgers", function (req, res) {
-    db.Burgers.findAll({})
+    db.burgers.findAll({})
       .then(function (dbBurgers) {
         res.json(dbBurgers);
       })
@@ -14,7 +14,7 @@ module.exports = function (app) {
   // takes UI input to create a new object
   app.post("/api/burgers", function (req, res) {
     console.log(req.body);
-    db.Burgers.create({
+    db.burgers.create({
       burger_name: req.body.STRING,
       devoured: false,
     }).then(function (dbBurgers) {
@@ -23,12 +23,12 @@ module.exports = function (app) {
   });
 
   app.put('/api/burgers/:id', function (req, res) {
-    db.Burgers.update({
+    db.burgers.update({
       devoured: true
     },
     {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function (dbBurgers) {
       res.json(dbBurgers);
