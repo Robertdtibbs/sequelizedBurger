@@ -15,7 +15,7 @@ module.exports = function (app) {
   app.post("/api/burgers", function (req, res) {
     console.log(req.body);
     db.burgers.create({
-      burger_name: req.body.STRING,
+      burger_name: req.body.burger_name,
       devoured: false,
     }).then(function (dbBurgers) {
       res.json(dbBurgers);
