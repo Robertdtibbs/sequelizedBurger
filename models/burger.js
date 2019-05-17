@@ -2,9 +2,9 @@ module.exports = function(sequelize, DataTypes){
   var burgers = sequelize.define("burgers", {
     burger_name: {
       type: DataTypes.STRING,
-      allownull: false,
+      allowNull: false,
       validate: {
-        len: [3,100]
+        len: [3, 100]
       }
     },
     devoured: {
